@@ -3,7 +3,7 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![Alt text](https://drive.google.com/file/d/1680AZ-JZqKwAf8GyiTpTs5oYrynRb5dl/view?usp=sharing)
+![AWS VPC with 1 Availability Zone](https://github.com/djwyattkla/AWS-ELK/blob/main/VPC1%20-%20Sketch.JPG)
 
 These files have been tested and used to generate a live ELK deployment on AWS. They can be used to either recreate the entire deployment pictured above. 
 
@@ -44,7 +44,7 @@ The configuration details of each machine may be found below.
 The machines on the internal network are not exposed to the public Internet. 
 
 Only the jumpbox machine and RDP can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-```10.10.2.122, 10.10.2.90, 10.10.2.63```
+```10.10.2.122, 10.10.2.90, 10.10.2.63``` change to your own.
 
 Machines within the network can only be accessed by SSH.
 - The only machines that can access the ELK server is the jumpbox. ```10.10.0.20```
@@ -66,7 +66,7 @@ Ansible was used to automate configuration of the ELK machine. No configuration 
 
 The playbook implements the following tasks:
 - Download pre-configured install-elk.yml file and transfer the file from the local folder to jumpbox using the following command: 
-- ```scp -i "Virginakey.pem" install-elk.yml ec2-user@ec2-54-89-238-20.compute-1.amazonaws.com/home/ec2-user```
+- ```scp -i "YourKey.pem" install-elk.yml ec2-user@ec2-54-89-238-20.compute-1.amazonaws.com/home/ec2-user```
 - SSH into jumpbox and check docker status and start docker service using command: 
  ```sudo service docker status> <sudo service docker start```
 
@@ -90,12 +90,12 @@ cd /etc/hosts
 
 -SSH into elk server, update and upgrade the unbuntu machine followed by installing
 
-```ansible-playbook install-elk.yaml --key-file Virginakey.pem```
+```ansible-playbook install-elk.yaml --key-file YourKey.pem```
 
 
 The following screenshot displays the result of the elk server after successfully configuring the ELK instance.
 
-![Alt text](https://raw.githubusercontent.com/mpham1989/Marty-Pham/main/images/Kibana.png)
+![Alt text](https://github.com/djwyattkla/AWS-ELK/blob/main/Kibana.JPG)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -118,7 +118,7 @@ SSH into the control node and follow the steps below:
 - The filebeat-playbook.yml is the playbook file to install or deploy that needs to be copied to " /etc/ansible/hosts/" directory.
 - Which file do you update to make Ansible run the playbook on a specific machine? -filebeat.yml which is the configuration file which will deploy into the elk-server. How do I specify which machine to install the ELK server on versus which to install Filebeat on? - you would edit the hosts file and create a new header called elkservers and add the private ip of the elkserver instance. Then configure the filebeat.yml file to add the private ip of the elk-server into two lines within the file. Lines 1106 and 1806 which are the hosts ips.  
 - Once filebeat is deployed, please use the following URL to verify that it's working ```10.10.2.63:5601```
-![Alt text](https://raw.githubusercontent.com/mpham1989/Cloud-Formation/main/images/Filebeat.png)
+![Alt text](https://github.com/djwyattkla/AWS-ELK/blob/main/Kibana.JPG)
 
 Bonus
 

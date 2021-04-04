@@ -1,5 +1,5 @@
 
-## Automated ELK Stack Deployment
+## Build an ELK Stack in AWS with Docker and Ansible
 
 The files in this repository were used to configure the network depicted below.
 
@@ -11,17 +11,17 @@ This document contains the following details:
 - Description of the Topology
 - Access Policies
 - ELK Configuration
-  - Beats in Use
+  - Files in use / needed
   - Machines Being Monitored
 - How to Use the Ansible Build
 
 
 ### Description of the Topology
 
-The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
+The main purpose of this network is to build exposed load-balanced and monitored instances of DVWA, the D*mn Vulnerable Web Application for testing purposes. 
 
-Load balancing ensures that the application will be highly efficient, in addition to restricting incoming traffic to the network.
-- Appliance-basedLoad-Balancers will help protect against threats such as SQL injection and Cross-Site scripting. 
+Load balancing ensures that the application will be highly efficient, in addition to restricting incoming traffic to the network. 
+- Appliance-based Load-Balancers will help protect against threats such as SQL injection and Cross-Site scripting. 
 What is the advantage of a jump box? - Having a jumpbox provides a high level of security by making databases and webservers inaccesible to the public. It can only be accessed by a using a unique key through an SSH TCP protocol.  
 The Jumpbox will also house and run the needed the containers and images to allow the webservers and databases to communicate.
  
@@ -33,7 +33,7 @@ The configuration details of each machine may be found below.
 
 | Name           | Function    | IP Address | Operating System    |
 |----------      |----------   |------------|------------------   |
-| Jumpbox/ansible| Gateway     | 10.10.0.20 | Linux (ec2)         |
+| Jumpbox/ansible| Gateway     | 10.10.0.20 | Linux2 (ec2)         |
 | DVWA1          | Webserver   | 10.10.2.122| Linux (ubuntu 20.04)|
 | DVWA2          | Webserver   | 10.10.2.90 | Linux (ubuntu 20.04)|
 | ELK            | Event Logger| 10.10.2.63 | Linux (ubuntu 20.04)|

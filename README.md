@@ -70,6 +70,7 @@ The playbook implements the following tasks:
 - Download pre-configured install-elk.yml file and transfer the file from the local folder to jumpbox using the following command: 
 - ```scp -i "YourKey.pem" install-elk.yml ec2-user@ec2-54-89-238-20.compute-1.amazonaws.com/home/ec2-user```
 - SSH into jumpbox and check docker status and start docker service using command: 
+- ```ssh ubuntu@YOUR_ELASTIC_IP```
  ```sudo service docker status> <sudo service docker start```
 
 - navigate into root by using following command: ```Sudo docker run -t -I cyberxsecurity/ansible bash```

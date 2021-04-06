@@ -5,7 +5,9 @@ The files in this repository were used to configure the network depicted below.
 
 ![AWS VPC with 1 Availability Zone](https://github.com/djwyattkla/AWS-ELK/blob/main/VPC1%20-%20Sketch.JPG)
 
-These files have been tested and used to generate a live ELK deployment on AWS. They can be used to either recreate the entire deployment pictured above. 
+These files have been tested and used to generate a live ELK deployment on AWS. They can be used to recreate the entire deployment pictured above or help deploy a similar environment using the helpful files included which save time. 
+
+What is an ELK Stack? (https://www.elastic.co/what-is/elk-stack)
 
 This document contains the following details:
 - Description of the Topology

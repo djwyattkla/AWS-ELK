@@ -5,9 +5,15 @@ The files in this repository were used to configure the network depicted below.
 
 ![AWS VPC with 1 Availability Zone](https://github.com/djwyattkla/AWS-ELK/blob/main/VPC1%20-%20Sketch.JPG)
 
+## Required Knowledge
+
+It would be helpful to be familiar with Amazon AWS services, GitBash or Linux CLI, Ansible, Docker, SSH, etc.
+
 These files have been tested and used to generate a live ELK deployment on AWS. They can be used to recreate the entire deployment pictured above or help deploy a similar environment using the helpful files included which save time. 
 
-What is an ELK Stack? (https://www.elastic.co/what-is/elk-stack)
+##### What is an ELK Stack? (https://www.elastic.co/what-is/elk-stack)
+
+##### Amazon Virtual Private Cloud Documentation (https://docs.aws.amazon.com/vpc/?id=docs_gateway)
 
 This document contains the following details:
 - Description of the Topology
@@ -181,8 +187,8 @@ Sudo docker ps
 
 Step 14: Copy the key to your ansible container
 Sudo docker cp <key> <container id>:/root
-![Alt text](https://raw.githubusercontent.com/mpham1989/ELK-Stack-amd-Filebeat-Project/main/images/sudo%20docker%20ps.png)
- ![Alt text](https://raw.githubusercontent.com/mpham1989/Cloud-Formation/main/images/Copying%20key.png)
+![Alt text]
+ ![Alt text]
 Move to your second cmd and type “ls”. The key should be visible if copied correctly
 
 Step 15: Create DVWA ec2 instances
@@ -200,7 +206,7 @@ Cd etc/ansible
 Ls and look for hosts and .cfg file
 First nano hosts file
 Uncomment webservers in hosts file
-![Alt text](https://github.com/mpham1989/ELK-Stack-amd-Filebeat-Project/blob/main/images/edit%20host%20file.png)
+![Alt text]
 Use private IP address of private machine
 Ansible will try connecting to this machine
 Now nano ansible.cfg file
@@ -239,16 +245,16 @@ Step 17: Create ansible_config.yml using the following code for Ubuntu in the sa
 Step 18: install playbook
 ansible-playbook ansible_config.yaml --key-file=Key1.pem
 
-![Alt text](https://github.com/mpham1989/ELK-Stack-amd-Filebeat-Project/blob/main/images/deploying%20ansible%20playbook.png)
+![Alt text]
 
 Step 19: Download the install-elk.yml file
 
 Step 22: Move install-elk.yml to ansible docker via "sudo docker cp <file> <docker process>:/root"
-![Alt text](https://github.com/mpham1989/ELK-Stack-amd-Filebeat-Project/blob/main/images/Copying%20key.png)
+![Alt text]
 
 Step 23: In docker process (aka ansible), make sure to add (if not there) the following beneath "[webservers]" and the ip addresses in /etc/ansible/hosts:
 
-![Alt text](https://github.com/mpham1989/ELK-Stack-amd-Filebeat-Project/blob/main/images/edit%20host%20file.png)
+![Alt text]
 
 Step 24: Ensure that elkserver ubuntu instance has been updated and upgraded (sudo apt-get update/upgrade)
 
@@ -258,16 +264,14 @@ Step 26: Ensure that inbound rules on your ELK server allow for ports 5044, 5061
 
 Step 27: Run ansible-playbook install-elk.yml --key-file=<your key>
 
-![Alt text](https://github.com/mpham1989/ELK-Stack-amd-Filebeat-Project/blob/main/images/installing%20elk.png)
+![Alt text]
 
 RDP into your windows RDP instance and paste the two private unbuntu ips on to chrome
 
-![Alt text](https://github.com/mpham1989/ELK-Stack-amd-Filebeat-Project/blob/main/images/DVWA1.png)
-![Alt text](https://github.com/mpham1989/ELK-Stack-amd-Filebeat-Project/blob/main/images/DVWA2.png)
 
 Step 28: Connect by copying the private ip address of your ELK server and paste it into your Windows
 
-![Alt text](https://raw.githubusercontent.com/mpham1989/Marty-Pham/main/images/Kibana.png)
+![Alt text]
 
 Step 29: Download and edit the filebeat.configuration.yml and rename it to filebeat.yml
 
@@ -279,8 +283,8 @@ Step 32: Transfer the filebeat files to jumpbox and then to the ansible root
 
 Step 33: run the filebeat playbook command
 
-![Alt text](https://github.com/mpham1989/ELK-Stack-amd-Filebeat-Project/blob/main/images/Deploy%20filebeat.png)
+![Alt text]
 
 Step 34: Hit check data on the kibana page (elk-server) to confirm if it was received.
 
-![Alt text](https://github.com/mpham1989/ELK-Stack-amd-Filebeat-Project/blob/main/images/Filebeat.png)
+![Alt text]

@@ -127,13 +127,13 @@ SSH into the control node and follow the steps below:
 - The filebeat-playbook.yml is the playbook file to install or deploy that needs to be copied to " /etc/ansible/hosts/" directory.
 - Which file do you update to make Ansible run the playbook on a specific machine? -filebeat.yml which is the configuration file which will deploy into the elk-server. How do I specify which machine to install the ELK server on versus which to install Filebeat on? - you would edit the hosts file and create a new header called elkservers and add the private ip of the elkserver instance. Then configure the filebeat.yml file to add the private ip of the elk-server into two lines within the file. Lines 1106 and 1806 which are the hosts ips.  
 - Once filebeat is deployed, please use the following URL to verify that it's working ```10.10.2.63:5601```
-![Alt text](https://github.com/djwyattkla/AWS-ELK/blob/main/Kibana.JPG)
 
-Bonus
+
+#### Installing With Cloud Formation Yaml file 
 
 Step 1: Open Cloud formation
 
-Step 2: Use the cloud formation template to deploy your network
+Step 2: Use the cloud formation template to deploy your network (cloud_formation_
 
 Step 3: Create a Linux 2 ec2 instance in your public subnet. (This instance will be hosting the ansible container)
 
@@ -141,7 +141,7 @@ Step 4: Copy the public to your instance
 
 scp -i "<key name>" <key name> ec2-user@ec2-##-###-###-##.us-region.compute.amazonaws.com:/home/ec2-user
   
-![Alt text](https://raw.githubusercontent.com/mpham1989/ELK-Stack-amd-Filebeat-Project/main/images/copying%20virigina%20key.png)
+
 
 Step 5: Connect to your ec2 instance using ssh
 
@@ -151,7 +151,7 @@ Step 6: install docker
 
 Sudo yum install docker -y
 
-![Alt text](https://raw.githubusercontent.com/mpham1989/ELK-Stack-amd-Filebeat-Project/main/images/isntall%20docker.png)
+
 
 Step 7: Create a daemon.json file in the /etc/docker path
 
@@ -170,7 +170,7 @@ Step 8: Start the docker service
 Sudo service docker start
 Check the status of docker service
 Sudo service docker status
-![Alt text](https://raw.githubusercontent.com/mpham1989/Cloud-Formation/main/images/docker%20status.png)
+
  
 Step 9: Pull the ansible image using the following command
 
@@ -187,8 +187,7 @@ Sudo docker ps
 
 Step 14: Copy the key to your ansible container
 Sudo docker cp <key> <container id>:/root
-![Alt text]
- ![Alt text]
+
 Move to your second cmd and type “ls”. The key should be visible if copied correctly
 
 Step 15: Create DVWA ec2 instances
@@ -206,7 +205,7 @@ Cd etc/ansible
 Ls and look for hosts and .cfg file
 First nano hosts file
 Uncomment webservers in hosts file
-![Alt text]
+
 Use private IP address of private machine
 Ansible will try connecting to this machine
 Now nano ansible.cfg file
@@ -245,16 +244,12 @@ Step 17: Create ansible_config.yml using the following code for Ubuntu in the sa
 Step 18: install playbook
 ansible-playbook ansible_config.yaml --key-file=Key1.pem
 
-![Alt text]
-
 Step 19: Download the install-elk.yml file
 
 Step 22: Move install-elk.yml to ansible docker via "sudo docker cp <file> <docker process>:/root"
 ![Alt text]
 
 Step 23: In docker process (aka ansible), make sure to add (if not there) the following beneath "[webservers]" and the ip addresses in /etc/ansible/hosts:
-
-![Alt text]
 
 Step 24: Ensure that elkserver ubuntu instance has been updated and upgraded (sudo apt-get update/upgrade)
 
@@ -264,14 +259,12 @@ Step 26: Ensure that inbound rules on your ELK server allow for ports 5044, 5061
 
 Step 27: Run ansible-playbook install-elk.yml --key-file=<your key>
 
-![Alt text]
 
 RDP into your windows RDP instance and paste the two private unbuntu ips on to chrome
 
 
 Step 28: Connect by copying the private ip address of your ELK server and paste it into your Windows
 
-![Alt text]
 
 Step 29: Download and edit the filebeat.configuration.yml and rename it to filebeat.yml
 
@@ -283,8 +276,6 @@ Step 32: Transfer the filebeat files to jumpbox and then to the ansible root
 
 Step 33: run the filebeat playbook command
 
-![Alt text]
 
 Step 34: Hit check data on the kibana page (elk-server) to confirm if it was received.
 
-![Alt text]

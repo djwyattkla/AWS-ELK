@@ -131,17 +131,16 @@ SSH into the control node and follow the steps below:
 
 #### Installing With Cloud Formation Yaml file 
 
-Step 1: Open Cloud formation
+Step 1: Open **Cloud formation**
 
-Step 2: Use the cloud formation template to deploy your network (cloud_formation_
+Step 2: Use the cloud formation template to deploy your network (https://github.com/djwyattkla/AWS-ELK/blob/main/Linux/Basic_Network_Cloud_Formation.yaml)
 
 Step 3: Create a Linux 2 ec2 instance in your public subnet. (This instance will be hosting the ansible container)
 
-Step 4: Copy the public to your instance
+Step 4: Copy the public key to your instance
 
-scp -i "<key name>" <key name> ec2-user@ec2-##-###-###-##.us-region.compute.amazonaws.com:/home/ec2-user
+**scp -i "<key name>" <key name> ec2-user@ec2-##-###-###-##.us-region.compute.amazonaws.com:/home/ec2-user**
   
-
 
 Step 5: Connect to your ec2 instance using ssh
 
